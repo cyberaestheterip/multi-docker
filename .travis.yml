@@ -4,18 +4,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t aes/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t 147c518230/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run aes/react-test npm test -- --coverage
+  - docker run 147c518230/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t aes/multi-client ./client
-  - docker build -t aes/multi-nginx ./nginx
-  - docker build -t aes/multi-server ./server
-  - docker build -t aes/multi-worker ./worker
+  - docker build -t 147c518230/multi-client ./client
+  - docker build -t 147c518230/multi-nginx ./nginx
+  - docker build -t 147c518230/multi-server ./server
+  - docker build -t 147c518230/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push aes/multi-client
-  - docker push aes/multi-nginx
-  - docker push aes/multi-server
-  - docker push aes/multi-worker
+  - docker push 147c518230/multi-client
+  - docker push 147c518230/multi-nginx
+  - docker push 147c518230/multi-server
+  - docker push 147c518230/multi-worker
